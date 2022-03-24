@@ -1,0 +1,57 @@
+CREATE A DOM ELEMENT 
+
+const div= document.createElement('div');
+
+.. then you need to append them to the DOM
+
+document.body.append(div);
+
+.. then create an unordered list inside it with a FOR loop:
+
+const ul = document.createElement('ul') 
+# Defines element 'ul'
+
+for (let i=0; i<3; i++) {
+    const li = document.createElement("li"); 
+    # ^unclear why include this inside the FOR loop
+    # see if it works outside the loop
+    li.textContent = (i+1).toString();
+    ul.append(li);
+}
+# FOR loop adds 3 numbered li's to the ul
+
+div.append(ul);
+# adds the ul to the previously created div
+
+WAYS TO MODIFY THE CONTENT OF ELEMENTS IN DOM
+
+li.textContent = "Hi There!"
+# using .textContent
+
+ul.innerHTML = '<li>Hi There!</li>'
+
+- this is less secure
+
+CHANGE PROPERTIES ON DOM NODES
+
+const element = document.createElement('h1');
+element.style.color = 'red';
+element.style.fontSize = '24px';
+
+.. or, instead of individually changing the style properties, 
+change the class.. 
+
+element.className = "properties assigned to this class"
+
+.. or, even better: modify the class instead of overwriting it.. 
+
+element.classList.remove("class I don't want it to be a part of");
+element.classList.add ("class I want it to be a part of");
+
+REMOVE ELEMENTS FROM THE DOM
+
+element.removeChild(someChildElement) 
+
+.. or ..
+
+element.remove ()
